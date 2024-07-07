@@ -18,7 +18,7 @@ const byte RATE_SIZE = 4; //Increase this for more averaging. 4 is good.
 byte rates[RATE_SIZE]; //Array of heart rates
 byte rateSpot = 0;
 long lastBeat = 0; //Time at which the last beat occurred
-bool isLead;
+char isLead;
 
 float beatsPerMinute;
 int beatAvg;
@@ -104,9 +104,10 @@ char s[20];
 
 void setup() {
   Wire.begin(1, 0);
-  pinMode(LOM, INPUT);
+  pinMode(LOM, INPUT_PULLDOWN);
   pinMode(LOP, INPUT);
   pinMode(SDN, OUTPUT);
+  pinMode(PINMonitor, INPUT);
   digitalWrite(SDN, HIGH);
   Serial.begin(115200);
 
@@ -153,7 +154,7 @@ void setup() {
 
 void screenRoutine() {
     lcd.clear();
-    sprintf(s, "%d KMH   %d BPM",speedKmh, bpm2);
+    sprintf(s, "%d KMH - %d BPM",speedKmh, bpm2);
     lcd.print(s);
     lcd.setCursor(5,1);
     sprintf(s, "  %d BPM %c", bpm, isLead);
