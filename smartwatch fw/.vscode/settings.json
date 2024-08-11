@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "75_2_dial.h": "c",
+        "radar.h": "c",
+        "79_2_dial.h": "c",
+        "racing.h": "c"
+    }
+}
